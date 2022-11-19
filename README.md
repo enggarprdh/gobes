@@ -1,2 +1,2 @@
 # gobes
-structure for go API
+Base structure project API using GO.
