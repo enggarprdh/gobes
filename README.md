@@ -7,9 +7,7 @@ gobes use **AIR** for fastest rebuild. So you don't need to stop the API for cha
 
 - Using command `air` to run API
 
-        ```
         air
-        ```
         
         
 
