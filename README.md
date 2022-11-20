@@ -8,6 +8,6 @@ gobes use **AIR** for fastest rebuild. So you don't need to stop the API for cha
 - Using command `air` to run API
 
         ```bash
-        air
+        go get -u github.com/novalagung/gubrak/v2
         ```
 
