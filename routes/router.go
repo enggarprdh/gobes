@@ -12,6 +12,7 @@ func Init(r *gin.Engine) *gin.Engine {
 		//For example we create "api/v1/ping"
 		ex := new(controllers.Example)
 		v1.GET("/ping", ex.Ping)
+		v1.POST("sayname", ex.SayName)
 	}
 
 	return r
