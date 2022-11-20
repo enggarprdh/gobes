@@ -9,4 +9,5 @@ gobes use **AIR** for fastest rebuild. So you don't need to stop the API for cha
 
         air
 
-![WindowsTerminal_rv8iLbLZ5F](https://user-images.githubusercontent.com/40974572/202897252-4581648b-f2a8-4753-ab6e-d7e08b7a04c9.png)
+
+![K2UT38LYQV](https://user-images.githubusercontent.com/40974572/202897343-322f7aee-e62a-4c00-93e9-cd359fc7157a.png)
