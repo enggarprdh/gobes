@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"fmt"
+	"gobes/models"
 	"gobes/pkg/response"
 	"net/http"
 
@@ -9,7 +10,6 @@ import (
 )
 
 type Example struct {
-	Name string `json:"name"`
 }
 
 func (e *Example) Ping(c *gin.Context) {
@@ -20,8 +20,8 @@ func (e *Example) Ping(c *gin.Context) {
 }
 
 func (e *Example) SayName(c *gin.Context) {
-
-	err := c.ShouldBindJSON(&e)
+	var i models.ExampleParam
+	err := c.ShouldBindJSON(&i)
 	if err != nil {
 		response.Fail(c, &response.FailResponse{
 			Code:    http.StatusInternalServerError,
@@ -30,6 +30,6 @@ func (e *Example) SayName(c *gin.Context) {
 	}
 	response.Success(c, &response.SuccessResponse{
 		Code:    http.StatusOK,
-		Message: fmt.Sprintf("Your name is %s", e.Name),
+		Message: fmt.Sprintf("Your name is %s", i.Name),
 	})
 }
