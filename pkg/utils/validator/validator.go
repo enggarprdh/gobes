@@ -2,7 +2,6 @@ package validator
 
 import (
 	"errors"
-	"fmt"
 	"net/url"
 
 	"github.com/gin-gonic/gin"
@@ -19,13 +18,13 @@ type NoMessageForm interface {
 }
 
 func Validate(c *gin.Context, form RequestForm) error {
-	fmt.Println(c.Request)
 	opt := govalidator.Options{
-		Request:  c.Request,
+		//Request:  c.Request,
+		Data:     form,
 		Rules:    form.Rules(),
 		Messages: form.Message(),
 	}
-	res := govalidator.New(opt).Validate()
+	res := govalidator.New(opt).ValidateStruct()
 
 	if len(res) > 0 {
 		for _, x := range res {

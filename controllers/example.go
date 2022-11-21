@@ -21,7 +21,16 @@ func (e *Example) Ping(c *gin.Context) {
 }
 
 func (e *Example) SayName(c *gin.Context) {
-	err := validator.Validate(c, &models.ExampleParam{})
+	var i models.ExampleParam
+	err := c.ShouldBindJSON(&i)
+	if err != nil {
+		response.Fail(c, &response.FailResponse{
+			Code:    http.StatusInternalServerError,
+			Message: err.Error(),
+		})
+		return
+	}
+	err = validator.Validate(c, &i)
 	if err != nil {
 		response.Fail(c, &response.FailResponse{
 			Code:    http.StatusInternalServerError,
@@ -31,6 +40,6 @@ func (e *Example) SayName(c *gin.Context) {
 	}
 	response.Success(c, &response.SuccessResponse{
 		Code:    http.StatusOK,
-		Message: fmt.Sprintf("Your name is %s", c.PostForm("name")),
+		Message: fmt.Sprintf("Your name is %s", i.Name),
 	})
 }

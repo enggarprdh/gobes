@@ -15,6 +15,6 @@ func (e *ExampleParam) Rules() govalidator.MapData {
 
 func (e *ExampleParam) Message() govalidator.MapData {
 	return govalidator.MapData{
-		"name": []string{"required:Name cannot be empty"},
+		"name": []string{"required:Jeneng ga oleh kosong lo bos!!!"},
 	}
 }
