@@ -30,11 +30,9 @@ func Success(c *gin.Context, r *SuccessResponse) {
 	if r.Code == 0 {
 		r.Code = http.StatusOK
 	}
-
 	if r.Message == "" {
 		r.Message = SuccessStatus
 	}
-
 	c.JSON(r.Code, r)
 }
 
