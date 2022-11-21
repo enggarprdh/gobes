@@ -19,12 +19,12 @@ type NoMessageForm interface {
 
 func Validate(c *gin.Context, form RequestForm) error {
 	opt := govalidator.Options{
-		//Request:  c.Request,
+		Request:  c.Request,
 		Data:     form,
 		Rules:    form.Rules(),
 		Messages: form.Message(),
 	}
-	res := govalidator.New(opt).ValidateStruct()
+	res := govalidator.New(opt).ValidateJSON()
 
 	if len(res) > 0 {
 		for _, x := range res {
@@ -37,7 +37,8 @@ func Validate(c *gin.Context, form RequestForm) error {
 func DefaultMessageValidate(c *gin.Context, form NoMessageForm) url.Values {
 	opt := govalidator.Options{
 		Request: c.Request,
+		Data:    form,
 		Rules:   form.Rules(),
 	}
-	return govalidator.New(opt).Validate()
+	return govalidator.New(opt).ValidateJSON()
 }
